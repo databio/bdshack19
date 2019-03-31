@@ -1,6 +1,8 @@
 # BDS Hackathon 2019
 
-### About
+---
+## 1. About
+
 The __Biomedical Data Sciences Training Program__ ([bds_tg](http://bme.virginia.edu/bds/)) is organizing a 2nd annual hackathon for April 4-5, 2019. This will be a 48-hour event nucleated by the current trainees on the Biomedical Data Science NIH T32 training grant, and will be open to other interested participants. Food will be provided to those who have RSVP'd to fuel a collaborative and productive 48 hours. 
 
 Last year, the [prior hackathon](https://github.com/databio/bds_hackathon) analyzed the CITEseq dataset (one of the first multi-omic single-cell datasets) and presented their efforts at the annual [UVA Datapalooza](https://www.youtube.com/watch?v=6qDEeRsMv7s&t=3808s). 
@@ -29,8 +31,7 @@ Feel free to share this announcement with individuals you think might be interes
 
 
 ---
-
-## Logistics
+## 2. Logistics
  
 ### Date/Time
 Thu Apr 4th 9am - Fri Apr 5th midnight
@@ -55,14 +56,15 @@ Share on Twitter: UVa BDS [@uva_biodatasci](https://twitter.com/uva_biodatasci)
  - Gregory Medlock (glm5uh), prior bdstg trainee
  - Jeffrey Xing (jcx9dy), prior bdstg trainee
 
+All three will be in and out throughout the event, helping where possible, and responding to questions both in person and remotely.
+
 #### Oversight:
 Make sure to thank Jason and Kim for making this possible, and feeding you!
  - Jason Papin (jap8r)
  - Kimberly Fitzhugh-Higgins (kaf5r)
 
 ---
-
-## Outline of the deliverable
+## 3. Outline of the deliverable
 
 During this hackathon we seek to develop a new python package (taking advantage of existing tools where available) that will load, store, visualize, and analyze single-cell multi-omic datasets from a recently published dataset (see below). 
 
@@ -119,86 +121,166 @@ Before going down the rabbit hole of which tools to utilize/wrangle in a 2-day t
 
 Checking some published papers, or existing documentation in various tools may serve as inspiration for some of these questions.
 
+
 ---
+## 3. Data
 
-## Data
-
-#### Option 1. pi-ATAC (ATAC + protein)
+### Option 1. pi-ATAC (ATAC + protein)
 paper (Chen 2018): https://www.nature.com/articles/s41467-018-07115-y
+ - expands on scATACseq from (Buenrostro 2015): (https://www.nature.com/articles/nature14590)
 
 Data from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE112091
- - ATAC-seq with 168 single cells from GM12878 cell line
- - 
+ - celltypes used: 
+   - v6.5 mouse ESCs
+   - human GM12878 lymphoblastoid cell line
+   - human K562 CML cell line
+   - mouse 4T1 breast tumor cell line
+   - mouse splenocytes
+   - mouse genetically engineered MMTV-PyMT breast tumor mouse model
+ - validate celltype (de)mixing: mESC (n = 144) and human GM12878 (n = 144)
+ - validate scATAC vs bulkATAC: GM17878 (n=168) vs 4 bulk replicates
+ - validate protein indexing: GM12878 (n=298), indexed by CD19 and phospho-NFkB_p65_Ser536
+ - protein abundance vs ATAC cell state: K562 nuclei (n=223), indexed by GATA2 TF (hi, med, low)
+ - validate cell_line/normal (de)mixing: mouse 4T1 (n=95) & splenocyte (n=95), indexed by EpCAM and CD45
+ - solid tumor/immune (de)mixing: MMTV-PyMT (n=369), indexed by EpCAM (n=177) and CD45 (n=192)
+ - protein abundance vs tumor cell state: MMTV-PyMT (n=839), indexed by EpCAM+ and HIF1α
+ - confirm hypoxia predicts cell state: 4T1 1%O2 at 6 timepoints, separate HIF1a staining + bulk-ATACseq
 
-#### Option 2. CITE-seq (RNA + protein)
+Pros: 
+ - (relatively more) novel dataset with single-cell-resolution __epigenome__ modality (via ATAC)
+ - methods-focused experiment (fewer biological uncertainties, and more densely sampled measurements) -> great for tool development as the biological novelties/uncertainties have been minimized
+
+Cons: 
+ - fewer total cells per sample (FACS sorting to 96-well plate)
+ - least number of protein readouts (1-2 FACS antibodies)
+ - less established tools -> more challenging to implement
+ - data is less convenient -> spread across >2000 files (single well nature of data collection led to single file per cell)
+   - ! unclear if protein signal is available (may need to contact authors)
+
+### Option 2. sci-CAR (RNA + ATAC)
+paper (Cao 2018): http://science.sciencemag.org/content/361/6409/1380
+
+Data from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117089
+ - HEK293T, human embryonic kidney cell line
+ - NIH/3T3, mouse fibroblast cell line
+ - A549, human lung adenocarcinoma–derived cells, after 0, 1, or 3 hours of 100 nM Dexamethasone treatment
+ - cells from whole kidneys of two 8-week-old male mice
+ 
+Pros: 
+ - (relatively more) novel dataset with single-cell-resolution __epigenome__ and __transcriptome__ modalities (2 largest breadth)
+ - data is neatly organized and pre-processed counts are available
+
+Cons: 
+ - modalities used are the largest 2 datatypes -> may be more unwieldy
+
+associated scripts for processing sci-CAR
+ - https://github.com/JunyueC/sci-CAR_analysis
+
+### Option 3. CITE-seq (RNA + protein)
 paper (Stoeckius 2017): https://www.nature.com/nmeth/journal/v14/n9/full/nmeth.4380.html
 
 Data from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE100866
  - 13 cellular surface markers (via ADTs)
 
 Pros:
- - same dataset analyzed in last year's hackathon; at some of the participants will already be familiar with the dataset
- - potentially faster learning curve
+ - same dataset analyzed in last year's hackathon; at some of the participants will already be familiar with the dataset -> potentially faster learning curve
+ - data is neatly organized and pre-processed counts are available
+ 
 Cons: 
  - less "novel" (relatively speaking, that is... as this datatype has barely even made it into widespread use yet!)
 
-#### Option 3. Cell Hashing (RNA + protein + sample barcode)
+### Option 4. Cell Hashing (RNA + protein + sample barcode)
 paper (Stoeckius 2018): https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1603-1
 
 Data from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108313
- - 2 cell lines
+ - cell lines: HEK293T, THP1, K562, and KG1
+ - HEK293T (human) and NIH-3T3 (mouse)
+ - human PBMC 
 
 Pros:
- - because this is a methods-focused experiment, there are fewer uncertainties, and more densely sampled measurements -> great for tool development as the biological novelties/uncertainties have been minimized
+ - methods-focused experiment (fewer biological uncertainties, and more densely sampled measurements) -> great for tool development as the biological novelties/uncertainties have been minimized
+ - data is neatly organized and pre-processed counts are available
+
 Cons: 
  - less ADTs than the original CITEseq's ~13 ADTs, since it was more focused on optimizing titrations
  - less biologically interesting; more of a proof-of-concept paper to show that sample multiplexing is possible via oligo barcoding by sample
 
-#### Option 4. ECCITE-seq (RNA + protein + sample barcode + VDJ clonality + CRISPR sgRNA)
+included tool for decoding indexes from CITE-seq/Cell-hashing data: 
+ - https://hoohm.github.io/CITE-seq-Count/Running-the-script/#antibody-barcodes-structure 
+ - only necessary if working with raw sequence data; not needed if using processed counts data
+
+### Option 5. ECCITE-seq (RNA + protein + sample barcode + VDJ clonality + CRISPR sgRNA)
 paper (Mimitou 2019): https://www.biorxiv.org/content/10.1101/466466v1
 
 Data from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE126310
- - ~49 ADTs
+ - ~49 ADTs representing surface protein markers
 
 Pros:
- - most number of modalities
+ - most number of modalities, including novel modalities (VDJ) and CRISPR
+ - _largest_ number of simultaneous protein markers (desired for cell phenotype readout)
+ - data is neatly organized and pre-processed counts are available
+
+Cons: 
+ - more modalities to deal with (though could selectively ignore, or prioritize)
 
 
-## Resources
+---
+## 5. Resources
 
 ### Computing
 
-Most data analysis can be done on your own laptop (especially if you already have popular data science analysis software installed). Please bring a laptop (+ charger) if you're interested in participating. 
+Throughout the event, please __commit any code into this repository__ (the repo you're reading right now). Start new folders for code, or other work. And most importantly, remember to __document your work__ and thought process, as if a colleague were reading it for the first time.
 
-For some specific tasks that require heavy-lifting, access to [Rivanna](https://arcs.virginia.edu/rivanna), the large-scale computing cluster at UVA is useful. Most UVA affiliates can request access, if you do not already have it (see instructions on UVA ARCS website, as well as guides on how to use it, and an intro UNIX tutorial). 
+Most data analysis can be done on your own laptop (especially if you already have popular data science analysis software installed). Please __bring a laptop (+ charger)__ if you're interested in participating!
 
-Current T32 trainees on the BDSTG should already be members of the `bds_tg` group on Rivanna. We have an allocation of disk space on Rivanna at `/sfs/lustre/allocations/bds_tg` 
+For some specific tasks that require specialized environments and/or heavy-lifting, access to [Rivanna](https://arcs.virginia.edu/rivanna), the large-scale computing cluster at UVA is useful. UVA affiliates can request access, if you do not already have it (see instructions on UVA ARCS website, as well as guides on how to use it, and an intro UNIX tutorial). 
+ - In addition to 50GB of permanent storage on `/home/computingid` (check with `hdquota`), 
+ - each user also has 10TB of short/medium-term storage on `/scratch/computingid` (check with `sfsq`), 
+   - which is plenty of space for the vast majority of your needs. 
+ - Finally, there are existing versions of software libraries, enviornments, and even interactive notebook servers that are pre-configured on Rivanna, which you may find useful if you don't want to manage all of this yourself. 
+
+Current T32 trainees on the BDSTG should already be members of the `bds_tg` group on Rivanna. Anybody in this group will already be able to access an additional allocation of permanent disk space on Rivanna at `/sfs/lustre/allocations/bds_tg` 
  - can optionally set an environment variable to point to this for easy communication: `export BDSDATA="/sfs/lustre/allocations/bds_tg"`
- - can also spend virtual compute credits using the shared compute allocation, also called `bds_tg` (use `allocations` command to see which ones you have access to)
-
-Please commit any code into this repository (the repo you're reading right now). Start new folders for code, or other work. 
+ - can also spend virtual compute "credits" (SU) using the shared compute allocation, also called `bds_tg` (use `allocations` command to see which ones you have access to)
 
 
 ### Tools
 
-The tools in this space are all relatively new, with more growing by the day. 
+The tools in multi-omic single-cell resolution analysis are all relatively new, with more growing by the day. 
 
 Feel free to look for others, reference any you find useful, and mix & match to make the most of analyzing/integrating data. There may be overlap between tools, especially if they are "tools of tools" built on the same underlying algorithms or popular base libraries. 
 
-scRNAseq toolkits:
+Depending on your goal, it may be quicker to wrangle tabular data using existing general-purpose data science libraries that you're already familiar with. In other cases, it will be absolutely necessary to leverage existing tools, instead of re-inventing the wheel on a complicated function. We encourage you to work together, divide-and-conquer, and switch back-and-forth accordingly to make the most of time available. 
+
+#### General Purpose tools:
+ - interactive data science environments
+   - Rstudio, jupyter, zeppelin (first 2 are now available on Rivanna)
+   - Excel or [Tableau](https://www.tableau.com/academic/students)
+     - worth mentioning for those with little coding experience, but want to also get hands-on with data in a short time window
+ - python
+   - pandas (data wrangling)
+   - scikit-learn (multi-purpose machine learning), or other specialized deep learning libraries
+   - matplotlib, seaborn, bokeh, plotly (plotting)
+ - R
+   - dplyr from tidyverse (data wrangling)
+   - [too many ML libraries to list](https://www.quora.com/What-are-the-best-machine-learning-packages-in-R)
+     - [cluster analysis](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
+   - ggplot2, plotly (plotting)
+
+#### scRNAseq toolkits:
  - seurat (R), https://github.com/satijalab/seurat
  - scanpy (python), https://github.com/theislab/scanpy
  - scVI & scANVI (python), https://github.com/YosefLab/scVI
  - SCope (python), https://github.com/aertslab/SCope
 
-Data Structures for large multi-feature + metadata handling:
+#### Data Structures for large multi-feature + metadata handling:
  - hdf5-based "loom" -> https://linnarssonlab.org/loompy/format/index.html
   - https://github.com/linnarsson-lab/loompy
   - https://github.com/mojaveazure/loomR
  - https://github.com/theislab/anndata
  - https://github.com/pydata/xarray
- 
-## Tutorials
 
-<to be filled>
- 
+### Tutorials
+
+Feel free to add here, if you find useful ones. 
+
