@@ -1,5 +1,35 @@
 # BDS Hackathon 2019
 
+   * [BDS Hackathon 2019](#bds-hackathon-2019)
+      * [1. About](#1-about)
+         * [Skills required](#skills-required)
+         * [Expectations](#expectations)
+      * [2. Logistics](#2-logistics)
+         * [Date/Time](#datetime)
+         * [Location(s)](#locations)
+         * [Live Chat](#live-chat)
+           * [2019 Organizers](#2019-organizers)
+      * [3. Outline of the deliverable](#3-outline-of-the-deliverable)
+         * [Packaging structure](#packaging-structure)
+         * [Parsing](#parsing)
+         * [Python object](#python-object)
+         * [Visualization](#visualization)
+         * [Machine learning](#machine-learning)
+      * [4. Data](#4-data)
+         * [Option 1. pi-ATAC](#option-1-pi-atac-atac--protein)
+         * [Option 2. sci-CAR](#option-2-sci-car-rna--atac)
+         * [Option 3. CITE-seq](#option-3-cite-seq-rna--protein)
+         * [Option 4. Cell Hashing](#option-4-cell-hashing-rna--protein--sample-barcode)
+         * [Option 5. ECCITE-seq](#option-5-eccite-seq-rna--protein--sample-barcode--vdj-clonality--crispr-sgrna)
+      * [5. Resources](#5-resources)
+         * [Computing](#computing)
+         * [Tools](#tools)
+            * [General Purpose tools:](#general-purpose-tools)
+            * [scRNAseq toolkits:](#scrnaseq-toolkits)
+            * [Data Structures for large multi-feature   metadata handling:](#data-structures-for-large-multi-feature--metadata-handling)
+         * [Tutorials](#tutorials)
+
+
 ---
 ## 1. About
 
@@ -9,7 +39,8 @@ Last year, the [prior hackathon](https://github.com/databio/bds_hackathon) analy
 
 __This year__, we will apply collective skillsets of all attendees towards analyzing __single-cell resolution multi-omic data__, with the aim of producing a __python package__ that will automate aspects of analyzing this increasingly popular data type. 
 
-#### No previous skills are required to attend, but just one of any of the following could be helpful:
+#### Skills required:
+No previous skills are required to attend, but just one of any of the following could be helpful:
  - working knowledge of R or python in data wrangling or package development
  - some experience with statistical or machine learning libraries/packages
  - working knowledge of either cytometry or sequencing data types
@@ -123,7 +154,7 @@ Checking some published papers, or existing documentation in various tools may s
 
 
 ---
-## 3. Data
+## 4. Data
 
 ### Option 1. pi-ATAC (ATAC + protein)
 paper (Chen 2018): https://www.nature.com/articles/s41467-018-07115-y
