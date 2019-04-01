@@ -303,6 +303,8 @@ Depending on your goal, it may be quicker to wrangle tabular data using existing
  - scanpy (python), https://github.com/theislab/scanpy
  - scVI & scANVI (python), https://github.com/YosefLab/scVI
  - SCope (python), https://github.com/aertslab/SCope
+ - informal lists:
+   - https://github.com/agitter/single-cell-pseudotime
 
 #### Data Structures for large multi-feature + metadata handling:
  - hdf5-based "loom" -> https://linnarssonlab.org/loompy/format/index.html
