@@ -77,18 +77,17 @@ Thu Apr 4th 9am - Fri Apr 5th midnight
 ### Presentation
 After the dedicated 2-day hackathon concludes, we will aim to present the work to a broader audience (scheduling with [CvilleBioHub](https://cvillebiohub.org/) some time in ~May).
 
-### Live Chat
-Post questions or chat with team members here:
- - sign up or go to UVACompBio's [`#hackathon2019` Slack channel](https://uvacompbio.slack.com/messages/CHGLT0XMK/)
+### Chat and Social Media
 
-Share on Twitter: UVa BDS [@uva_biodatasci](https://twitter.com/uva_biodatasci)
+ - Slack: [`#hackathon2019` channel](https://uvacompbio.slack.com/messages/CHGLT0XMK/) in workspace `UVACompBio`. 
+ - Twitter: UVa BDS [@uva_biodatasci](https://twitter.com/uva_biodatasci)
 
 #### 2019 Organizers:
  - Nathan Sheffield (ns5bc), [website](http://databio.org/)
  - Gregory Medlock (glm5uh), prior bdstg trainee
  - Jeffrey Xing (jcx9dy), prior bdstg trainee
 
-All three will be in and out throughout the event, helping where possible, and responding to questions both in person and remotely.
+All three will be in and out throughout the event to help and respond to questions both in person and remotely.
 
 #### Oversight:
 Make sure to thank Jason and Kim for making this possible, and feeding you!
@@ -98,9 +97,7 @@ Make sure to thank Jason and Kim for making this possible, and feeding you!
 ---
 ## 3. Deliverable
 
-During this hackathon we seek to develop a new python package (taking advantage of existing tools where available) that will load, store, visualize, and analyze single-cell multi-omic datasets from a recently published dataset (see below). 
-
-Our python package will need to consider and implement these elements:
+We seek to develop a python package to load, store, visualize, and analyze recently published single-cell multi-omic datasets (see data section below). We should take advantage of existing tools where available. Our python package will need to consider and implement these elements:
 
 ### Packaging structure
 Making our functions installable and easily distributable would lead to convenient usage by others. Organizers can help here, when we get to this point!
