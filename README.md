@@ -7,7 +7,7 @@
       * [2. Logistics](#2-logistics)
          * [Date/Time](#datetime)
          * [Location](#location)
-         * [Live Chat: Slack + Twitter](#live-chat-and-social-media)
+         * [Live Chat: Slack + Twitter](#chat-and-social-media)
            * [2019 Organizers](#2019-organizers)
       * [3. Outline of the deliverable](#3-deliverable)
          * [Packaging structure](#packaging-structure)
