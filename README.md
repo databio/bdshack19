@@ -39,7 +39,7 @@ Last year, the [prior hackathon](https://github.com/databio/bds_hackathon) analy
 
 __This year__, we will apply collective skillsets of all attendees towards analyzing __single-cell resolution multi-omic data__, with the aim of producing a __python package__ that will automate aspects of analyzing this increasingly popular data type. 
 
-#### Skills required:
+#### Skills required
 No previous skills are required to attend, but just one of any of the following could be helpful:
  - working knowledge of R or python in data wrangling or package development
  - some experience with statistical or machine learning libraries/packages
@@ -49,7 +49,7 @@ No previous skills are required to attend, but just one of any of the following 
 
 Feel free to share this announcement with individuals you think might be interested in participating!
 
-#### Expectations:
+#### Expectations
  - have fun and make friends!
  - come with an appetite to learn, regardless of how advanced you may be in a particular area
  - embrace working together (you might temporarily go faster alone, but in the long run you'll only go farther as a team)
@@ -82,7 +82,7 @@ After the dedicated 2-day hackathon concludes, we will aim to present the work t
  - Slack: [`#hackathon2019` channel](https://uvacompbio.slack.com/messages/CHGLT0XMK/) in workspace `UVACompBio`. 
  - Twitter: UVa BDS [@uva_biodatasci](https://twitter.com/uva_biodatasci)
 
-### 2019 Organizers:
+### 2019 Organizers
  - Nathan Sheffield (ns5bc), [website](http://databio.org/)
  - Gregory Medlock (glm5uh), prior bdstg trainee
  - Jeffrey Xing (jcx9dy), prior bdstg trainee
@@ -287,7 +287,7 @@ Feel free to look for others, reference any you find useful, and mix & match to 
 
 Depending on your goal, it may be quicker to wrangle tabular data using existing general-purpose data science libraries that you're already familiar with. In other cases, it will be absolutely necessary to leverage existing tools, instead of re-inventing the wheel on a complicated function. We encourage you to work together, divide-and-conquer, and switch back-and-forth accordingly to make the most of time available. 
 
-#### General Purpose tools:
+#### General Purpose tools
  - interactive data science environments
    - Rstudio, jupyter, zeppelin (first 2 are now available on Rivanna)
    - Excel or [Tableau](https://www.tableau.com/academic/students)
@@ -302,7 +302,7 @@ Depending on your goal, it may be quicker to wrangle tabular data using existing
      - [cluster analysis](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
    - ggplot2, plotly (plotting)
 
-#### scRNAseq toolkits:
+#### scRNAseq toolkits
  - seurat (R), https://github.com/satijalab/seurat
  - scanpy (python), https://github.com/theislab/scanpy
  - scVI & scANVI (python), https://github.com/YosefLab/scVI
@@ -310,7 +310,7 @@ Depending on your goal, it may be quicker to wrangle tabular data using existing
  - informal lists:
    - https://github.com/agitter/single-cell-pseudotime
 
-#### Data Structures for large multi-feature + metadata handling:
+#### Data Structures for large multi-feature + metadata handling
  - hdf5-based "loom" -> https://linnarssonlab.org/loompy/format/index.html
   - https://github.com/linnarsson-lab/loompy
   - https://github.com/mojaveazure/loomR
