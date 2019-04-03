@@ -67,13 +67,14 @@ Feel free to share this announcement with individuals you think might be interes
 ### Date/Time
 Thu Apr 4th 9am - Fri Apr 5th midnight
 
-### Location(s)
+### Location
 [Rice Hall](https://goo.gl/maps/TRenTumyx3P2) (computer science building)
  - if you have trouble getting in or finding your way, feel free to email organizers, or post in the slack channel (someone might be already there and can let you in)
  - __Room 128__, main room for both days (except Fri noon-2pm)
  - __Room 242__, lunch both days: noon-2pm
  - Breakout groups feel free to spillover into lounge areas around Rice Hall, or elsewhere. 
 
+### Presentation
 After the dedicated 2-day hackathon concludes, we will aim to present the work to a broader audience (scheduling with [CvilleBioHub](https://cvillebiohub.org/) some time in ~May).
 
 ### Live Chat
@@ -95,7 +96,7 @@ Make sure to thank Jason and Kim for making this possible, and feeding you!
  - Kimberly Fitzhugh-Higgins (kaf5r)
 
 ---
-## 3. Outline of the deliverable
+## 3. Deliverable
 
 During this hackathon we seek to develop a new python package (taking advantage of existing tools where available) that will load, store, visualize, and analyze single-cell multi-omic datasets from a recently published dataset (see below). 
 
@@ -106,8 +107,9 @@ Making our functions installable and easily distributable would lead to convenie
 
 Can take a look at cookie cutter examples/templates to guide initial development:
 - could use as a template existing packages from group members: e.g. [medusa](https://github.com/gregmedlock/Medusa), [peppy](http://github.com/databio/peppy), [divvy](http://github.com/databio/divvy)
+- [cookiecutter](https://github.com/audreyr/cookiecutter) helps with python package skeletons
 - submit to pypi? conda?
-- documentation? readthedocs? vs others?
+- documentation? Could use [readthedocs](https://readthedocs.org/), [mkdocs](https://www.mkdocs.org/), or others?
 
 ### Parsing
 
