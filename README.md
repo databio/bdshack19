@@ -70,8 +70,10 @@ Thu Apr 4th 9am - Fri Apr 5th midnight
 ### Location
 [Rice Hall](https://goo.gl/maps/TRenTumyx3P2) (computer science building)
  - if you have trouble getting in or finding your way, feel free to email organizers, or post in the slack channel (someone might be already there and can let you in)
- - __Room 128__, main room for both days (except Fri noon-2pm)
- - __Room 242__, lunch both days: noon-2pm
+ - __Room 128__, main room for both days (except Friday noon-2pm, we have to vacate temporarily)
+   - light breakfast both days
+   - dinner Friday (+dessert)!
+ - __Room 242__, only for lunch both days: noon-2pm
  - Breakout groups feel free to spillover into lounge areas around Rice Hall, or elsewhere. 
 
 ### Presentation
