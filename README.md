@@ -303,6 +303,11 @@ Depending on your goal, it may be quicker to wrangle tabular data using existing
    - [too many ML libraries to list](https://www.quora.com/What-are-the-best-machine-learning-packages-in-R)
      - [cluster analysis](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
    - ggplot2, plotly (plotting)
+ - Software development and deployment
+   - cookiecutter (https://cookiecutter.readthedocs.io/en/latest/readme.html), which implements a simple version of some of the items below
+   - PyPI deployment (https://pypi.org/ e.g. enable "pip install" for our package)
+   - Unit tests w/ pytest (https://docs.pytest.org/en/latest/)
+   - Continuous integration (https://travis-ci.org/ - automatically runs tests and reports changes for every commit/pull request)
 
 #### scRNAseq toolkits
  - seurat (R), https://github.com/satijalab/seurat
