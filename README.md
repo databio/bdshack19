@@ -82,14 +82,13 @@ After the dedicated 2-day hackathon concludes, we will aim to present the work t
  - Slack: [`#hackathon2019` channel](https://uvacompbio.slack.com/messages/CHGLT0XMK/) in workspace `UVACompBio`. 
  - Twitter: UVa BDS [@uva_biodatasci](https://twitter.com/uva_biodatasci)
 
-#### 2019 Organizers:
+### 2019 Organizers:
  - Nathan Sheffield (ns5bc), [website](http://databio.org/)
  - Gregory Medlock (glm5uh), prior bdstg trainee
  - Jeffrey Xing (jcx9dy), prior bdstg trainee
 
 All three will be in and out throughout the event to help and respond to questions both in person and remotely.
 
-#### Oversight:
 Make sure to thank Jason and Kim for making this possible, and feeding you!
  - Jason Papin (jap8r)
  - Kimberly Fitzhugh-Higgins (kaf5r)
