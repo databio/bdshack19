@@ -75,6 +75,8 @@ Thu Apr 4th 9am - Fri Apr 5th midnight
    - dinner Friday (+dessert)!
  - __Room 242__, only for lunch both days: noon-2pm
  - Breakout groups feel free to spillover into lounge areas around Rice Hall, or elsewhere. 
+   - __Room 514__, side room from 8-5 on Thursday.
+   - __Room 204__, side room from 5PM Thursday to noon Friday and 5PM Friday until midnight.
 
 ### Presentation
 After the dedicated 2-day hackathon concludes, we will aim to present the work to a broader audience (scheduling with [CvilleBioHub](https://cvillebiohub.org/) some time in ~May).
