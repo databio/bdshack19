@@ -4,7 +4,7 @@ In this part of the project, we parse the semi-processed GEO data from GSE117089
 
 ## Description of observed text input files
 
-Cell: each row is individual cell identifier with information about whether it is replicate 1 or replicate 2
+`*_cell.txt.gz`: each row is individual cell identifier with information about whether it is replicate 1 or replicate 2
 
 ## Proposal for desired loom output file
 
