@@ -1,3 +1,4 @@
+import pandas as pd
 
 SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT_QUANT']
 
@@ -37,6 +38,14 @@ class Multimeasure(object):
 
         return str
 
+    def join(self, how, on, modalities=None):
+        if not modalities:
+            modalities = list(self.measures.keys())
+        if (len(modalities)) != 2:
+            raise Exception("Must provide 2 modalities to join.")
+        pd.merge(mm.measures[modalities[0]].var, 
+            mm.measures[modalities[1]].var, how=how, on=on)
+
 
 
 
@@ -48,4 +57,4 @@ def load_AnnData(file_x, file_obs, file_var, parent_folder=None):
     X = scipy.io.mmread(os.path.join(parent_folder, file_x))
     obs = pandas.read_csv(os.path.join(parent_folder, file_obs))
     var = pandas.read_csv(os.path.join(parent_folder, file_var))
-    return(AnnData(X=a, obs=pks, var=ac))
+    return(AnnData(X=X, obs=obs, var=var))
