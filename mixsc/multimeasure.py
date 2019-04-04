@@ -28,3 +28,24 @@ class Multimeasure(object):
                 raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
             self.measures[modality] = mode_map[modality]
             
+
+    def __str__(self):
+        str = "{} object\n".format(self.__class__.__name__)
+        str += "{} data types".format(len(self.measures))
+        for k,v in self.measures.items():
+            str += "{key}: {val}".format(key=k, val=v.__str__())
+
+        return str
+
+
+
+
+def load_AnnData(file_x, file_obs, file_var, parent_folder=None):
+    """
+    Given 3 matrices, returns an anndata object. Helps for
+    loading annData objects.
+    """
+    X = scipy.io.mmread(os.path.join(parent_folder, file_x))
+    obs = pandas.read_csv(os.path.join(parent_folder, file_obs))
+    var = pandas.read_csv(os.path.join(parent_folder, file_var))
+    return(AnnData(X=a, obs=pks, var=ac))
