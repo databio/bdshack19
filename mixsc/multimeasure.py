@@ -31,9 +31,9 @@ class Multimeasure(object):
 
     def __str__(self):
         str = "{} object\n".format(self.__class__.__name__)
-        str += "{} data types".format(len(self.measures))
+        str += "{} data types\n".format(len(self.measures))
         for k,v in self.measures.items():
-            str += "{key}: {val}".format(key=k, val=v.__str__())
+            str += "{key}: {val}\n".format(key=k, val=v.__str__())
 
         return str
 
