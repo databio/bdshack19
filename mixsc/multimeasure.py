@@ -1,7 +1,7 @@
 
 SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT_QUANT']
 
-class multimeasure(object):
+class Multimeasure(object):
     """
     Container for multiple measurement modalities, each represented as an AnnData object.
     
