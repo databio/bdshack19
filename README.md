@@ -72,8 +72,10 @@ Thu Apr 4th 9am - Fri Apr 5th midnight
  - if you have trouble getting in or finding your way, feel free to email organizers, or post in the slack channel (someone might be already there and can let you in)
  - __Room 128__, main room for both days (except Friday noon-2pm, we have to vacate temporarily)
    - light breakfast both days
+   - dinner Thursday (Crozet Pizza)
    - dinner Friday (+dessert)!
- - __Room 242__, only for lunch both days: noon-2pm
+ - __Room 242__, 
+   - lunch Thursday: noon-2pm (Sticks Kebab)
  - Breakout groups feel free to spillover into lounge areas around Rice Hall, or elsewhere. 
    - __Room 514__, side room from 8-5 on Thursday.
    - __Room 204__, side room from 5PM Thursday to noon Friday and 5PM Friday until midnight.
