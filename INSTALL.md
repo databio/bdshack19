@@ -37,3 +37,11 @@ conda install seaborn scikit-learn statsmodels numba
 conda install -c conda-forge python-igraph louvain
 pip install -U scanpy
 ```
+
+In order to get this environment to show up as a kernel in jupyterlab, you'll have to manually activate an ipython kernel for the environment. Run the following while you're in the environment:
+
+```
+python -m ipykernel install --user --name bdshack2019 --display-name "Python (bdshack2019)"
+```
+
+After running this command, reboot your jupyterlab instance and the kernel should appear as an option in the tile view when creating a new notebook.
