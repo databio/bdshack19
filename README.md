@@ -72,9 +72,13 @@ Thu Apr 4th 9am - Fri Apr 5th midnight
  - if you have trouble getting in or finding your way, feel free to email organizers, or post in the slack channel (someone might be already there and can let you in)
  - __Room 128__, main room for both days (except Friday noon-2pm, we have to vacate temporarily)
    - light breakfast both days
+   - dinner Thursday (Crozet Pizza)
    - dinner Friday (+dessert)!
- - __Room 242__, only for lunch both days: noon-2pm
+ - __Room 242__, 
+   - lunch Thursday: noon-2pm (Sticks Kebab)
  - Breakout groups feel free to spillover into lounge areas around Rice Hall, or elsewhere. 
+   - __Room 514__, side room from 8-5 on Thursday.
+   - __Room 204__, side room from 5PM Thursday to noon Friday and 5PM Friday until midnight.
 
 ### Presentation
 After the dedicated 2-day hackathon concludes, we will aim to present the work to a broader audience (scheduling with [CvilleBioHub](https://cvillebiohub.org/) some time in ~May).
@@ -271,7 +275,7 @@ For some specific tasks that require specialized environments and/or heavy-lifti
  - Finally, there are existing versions of software libraries, enviornments, and even interactive notebook servers that are pre-configured on Rivanna, which you may find useful if you don't want to manage all of this yourself. 
 
 Current T32 trainees on the BDSTG should already be members of the `bds_tg` group on Rivanna. Anybody in this group will already be able to access an additional allocation of permanent disk space on Rivanna at `/sfs/lustre/allocations/bds_tg` 
- - can optionally set an environment variable to point to this for easy communication: `export BDSDATA="/sfs/lustre/allocations/bds_tg"`
+ - can optionally set an environment variable to point to this for easy communication: e.g. `export BDSDATA="/sfs/lustre/allocations/bds_tg"`
  - can also spend virtual compute "credits" (SU) using the shared compute allocation, also called `bds_tg` (use `allocations` command to see which ones you have access to)
  
 We've recently just created a `bdshackathon` Rivanna group and added those who have RSVP'd to it. In theory, this should automatically grant access to rivanna, with a temporary number of credit hours allocated that should be sufficient to get started until you [request your own](https://arcs.virginia.edu/allocations). See: 
@@ -279,6 +283,10 @@ We've recently just created a `bdshackathon` Rivanna group and added those who h
  - [rivanna interactive webportal](https://arcs.virginia.edu/ood)
    - for most work, we recommend logging into the web portal https://rivanna-portal.hpc.virginia.edu (netbadge required)
    - and starting an interactive jupyterlab or Rstudio server with 1 cpu/core (since most functions are single-threaded, and you don't want to waste credit hours)
+
+Shared folder on Rivanna (for all hackathon attendees):
+ - `/project/shefflab/bdshack19`  (accessible from the Rstudio or JupyterLab rivanna apps)
+ - `/sfs/lustre/allocations/shefflab/bdshack19`
 
 
 ### Tools
