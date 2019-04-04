@@ -31,8 +31,8 @@ class Multimeasure(object):
             
 
     def __str__(self):
-        str = "{} object\n".format(self.__class__.__name__)
-        str += "{} data types\n".format(len(self.measures))
+        str = "{} object with {} modalities\n".format(
+            self.__class__.__name__), len(self.measures))
         for k,v in self.measures.items():
             str += "{key}: {val}\n".format(key=k, val=v.__str__())
 
@@ -43,18 +43,20 @@ class Multimeasure(object):
             modalities = list(self.measures.keys())
         if (len(modalities)) != 2:
             raise Exception("Must provide 2 modalities to join.")
-        pd.merge(mm.measures[modalities[0]].var, 
+        return pd.merge(mm.measures[modalities[0]].var, 
             mm.measures[modalities[1]].var, how=how, on=on)
 
 
 
 
-def load_AnnData(file_x, file_obs, file_var, parent_folder=None):
+def load_AnnData(file_x, file_obs, file_var, parent_folder=None, transpose_x=False):
     """
     Given 3 matrices, returns an anndata object. Helps for
     loading annData objects.
     """
     X = scipy.io.mmread(os.path.join(parent_folder, file_x))
+    if transpose_x:
+        X = X.transpose()
     obs = pandas.read_csv(os.path.join(parent_folder, file_obs))
     var = pandas.read_csv(os.path.join(parent_folder, file_var))
     return(AnnData(X=X, obs=obs, var=var))
