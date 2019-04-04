@@ -319,6 +319,8 @@ Depending on your goal, it may be quicker to wrangle tabular data using existing
 
 #### scRNAseq toolkits
  - seurat (R), https://github.com/satijalab/seurat
+   - [add multimodal data in seurat object](https://satijalab.org/seurat/v3.0/multimodal_vignette.html#add-the-protein-expression-levels-to-the-seurat-object)
+   - authors of seurat also are authors of CITE-seq set of papers
  - scanpy (python), https://github.com/theislab/scanpy
  - scVI & scANVI (python), https://github.com/YosefLab/scVI
  - SCope (python), https://github.com/aertslab/SCope
