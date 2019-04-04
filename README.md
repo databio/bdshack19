@@ -285,6 +285,7 @@ We've recently just created a `bdshackathon` Rivanna group and added those who h
    - and starting an interactive jupyterlab or Rstudio server with 1 cpu/core (since most functions are single-threaded, and you don't want to waste credit hours)
 
 Shared folder on Rivanna (for all hackathon attendees):
+ - `/project/shefflab/bdshack19`  (accessible from the Rstudio or JupyterLab rivanna apps)
  - `/sfs/lustre/allocations/shefflab/bdshack19`
 
 
