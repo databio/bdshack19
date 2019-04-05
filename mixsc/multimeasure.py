@@ -91,7 +91,8 @@ class MultiAnnData(object):
                 logging.warn("Overwriting modality: {}".format(modality))
 
         self.measures[modality] = sc.AnnData(X=X, obs=obs, var=var)
-        setattr(self, modality, mode_map[modality])
+        setattr(self, modality, self.measures[modality])
+        print("Modality {} added.".format(modality))
 
     def is_empty(self):
         """ Check if object contains any modalities """
