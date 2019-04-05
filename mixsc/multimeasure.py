@@ -1,3 +1,4 @@
+import logging
 import os
 import pandas as pd
 import scanpy as sc
@@ -6,7 +7,7 @@ import scipy
 SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT_QUANT']
 
 
-class Multimeasure(object):
+class MultiAnnData(object):
     """
     Container for multiple measurement modalities, each represented as an AnnData object.
     
@@ -56,16 +57,14 @@ class Multimeasure(object):
                         self.measures[modalities[1]].var, how=how, on=on)
 
     def add_modality(self, modality_type: str, file_x: str, file_obs: str = None, file_var: str = None,
-                     parent_folder: str = "", transpose_x=False):
+                     parent_folder: str = "", transpose_x=False, overwrite=False):
         """
-        Given 3 matrices, returns an anndata object. Helps for
-        loading annData objects.
+        Given up to 3 matrix files, creates AnnData file and adds it to Multimeasure object
 
         :param file_x: Filename for the data matrix itself (as a MM)
         :param file_obs: Filename for the observation annotation matrix in csv format
         :param file_var: Filename for variables annotation matrix in CSV format.
         """
-        # TODO: unify docstring style
 
         if modality_type not in SUPPORTED_MODALITIES:
             raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
@@ -83,6 +82,12 @@ class Multimeasure(object):
             var = pd.read_csv(os.path.join(parent_folder, file_var))
         else:
             var = None
+
+        if modality_type in self.measures.keys():
+            if not overwrite:
+                raise AttributeError("Modality of type: {}, already exist in Multimeasure object".format(modality_type))
+            else:
+                logging.warn("Overwriting modality: {}".format(modality_type))
 
         self.measures[modality_type] = sc.AnnData(X=X, obs=obs, var=var)
 
