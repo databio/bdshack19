@@ -15,4 +15,4 @@ intersectRes = peaks.intersect(gff,wao=True)
 #chr1	3206300	3206564	chr1	HAVANA	transcript	3206523	3215632	.	-	.	ID=ENSMUST00000159265.1;Parent=ENSMUSG00000051951.5;gene_id=ENSMUSG00000051951.5;transcript_id=ENSMUST00000159265.1;gene_type=protein_coding;gene_status=KNOWN;gene_name=Xkr4;transcript_type=processed_transcript;transcript_status=KNOWN;transcript_name=Xkr4-002;level=2;transcript_support_level=1;havana_gene=OTTMUSG00000026353.2;havana_transcript=OTTMUST00000086624.1
 
 ## Convert to pandas data frame 
-intersectRes_pd = pd.read_csv( intersectRes.fn , sep = "\t" , names = ["peak_chr", "peak_start", "peak_end", "chr" , "start", "end" , "coverage" , ""] )
+intersectRes_pd = pd.read_csv( intersectRes.fn , sep = "\t" , names = ["peak_chr", "peak_start", "peak_end", "chr" , "start", "end" , "strand" , ""] )
