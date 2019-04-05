@@ -27,10 +27,6 @@ class MultiAnnData(object):
 
     def __init__(self, measures: str = None, modalities: str = None):
 
-        # Initiate attributes for supported modalities
-        for modality in SUPPORTED_MODALITIES:
-            setattr(self, modality, None)
-
         self.measures = {}
         if measures and modalities:
             mode_map = dict(zip(modalities, measures))
@@ -38,7 +34,6 @@ class MultiAnnData(object):
                 if modality not in SUPPORTED_MODALITIES:
                     raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
                 self.measures[modality] = mode_map[modality]
-                setattr(self, modality, mode_map[modality])
 
     def __str__(self):
 
@@ -112,7 +107,6 @@ class MultiAnnData(object):
         
         self.measures[modality] = X
         
-        setattr(self, modality, self.measures[modality])
         print("Modality {} added.".format(modality))
 
     def is_empty(self):
@@ -137,3 +131,14 @@ class MultiAnnData(object):
 
         for mtype in select:
             self.measures[mtype].write(file_name + "_" + mtype + ".h5ad")
+
+    def __getattr__(self, name):
+        """
+        Allows for attribute-style access for supported modalities
+        """
+        if name in SUPPORTED_MODALITIES:
+            return self.measures[name]
+        else:
+            raise AttributeError("%r object has no attribute %r" %
+                     (self.__class__.__name__, name))
+
