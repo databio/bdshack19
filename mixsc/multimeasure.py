@@ -4,6 +4,8 @@ import pandas as pd
 import scanpy as sc
 import scipy.io
 
+from scanpy import AnnData
+
 SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT']
 
 
