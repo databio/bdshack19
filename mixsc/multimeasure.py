@@ -4,8 +4,6 @@ import pandas as pd
 import scanpy as sc
 import scipy.io
 
-from scanpy import AnnData
-
 SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT']
 
 
@@ -54,8 +52,8 @@ class MultiAnnData(object):
         """
 
         if modality not in SUPPORTED_MODALITIES:
-            raise AttributeError('Unsupported modality: '{}'. Must be one of {}'.format(
-                modality, str(SUPPORTED_MODALITIES))
+            raise AttributeError("Unsupported modality: '{}'. Must be one of {}".format(
+                modality, str(SUPPORTED_MODALITIES)))
 
         adata = load_AnnData(file_x, file_obs, file_var, obs_index, var_index, parent_folder,
             transpose_x)
@@ -63,7 +61,7 @@ class MultiAnnData(object):
         self.add_modality(modality, adata, overwrite)
         
 
-    def add_modality(self, modality: str, adata: AnnData, overwrite=False):
+    def add_modality(self, modality: str, adata: sc.AnnData, overwrite=False):
         """ Adds an AnnData object to the MultiAnnData object """
 
         if modality not in SUPPORTED_MODALITIES:
