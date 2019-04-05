@@ -58,19 +58,31 @@ class MultiAnnData(object):
                         self.measures[modalities[1]].var, how=how, on=on)
 
     def add_modality(self, modality: str, file_x: str, file_obs: str = None, file_var: str = None,
-                     parent_folder: str = "", transpose_x=False, overwrite=False):
+                    obs_index: str = None, var_index: str = None, parent_folder: str = "", 
+                     transpose_x=False, overwrite=False):
         """
         Given up to 3 matrix files, creates AnnData file and adds it to Multimeasure object
 
-        :param file_x: Filename for the data matrix itself (as a MM)
-        :param file_obs: Filename for the observation annotation matrix in csv format
-        :param file_var: Filename for variables annotation matrix in CSV format.
+        Parameters
+        ----------
+        file_x
+            Filename for the data matrix itself (as a Matrix Market file).
+        file_obs
+            Filename for the observation annotation matrix in csv format.
+        file_var
+            Filename for variables annotation matrix in csv format.
+        obs_index
+            column label in obs for the column that should be assigned to the index. Optional,
+            but required for plotting and some filtering with scanpy.
+        var_index
+            column label in var for the column that should be assigned to the index. Optional,
+            but required for plotting and some filtering with scanpy.
         """
 
         if modality not in SUPPORTED_MODALITIES:
             raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
 
-        X = scipy.io.mmread(os.path.join(parent_folder, file_x))
+        X = sc.read_mtx(os.path.join(parent_folder, file_x))
         if transpose_x:
             X = X.transpose()
 
@@ -90,7 +102,16 @@ class MultiAnnData(object):
             else:
                 logging.warn("Overwriting modality: {}".format(modality))
 
-        self.measures[modality] = sc.AnnData(X=X, obs=obs, var=var)
+        X.obs = obs
+        X.var = var
+        
+        if var_index:
+            X.var_names = X.var[var_index].tolist()
+        if obs_index:
+            X.obs_names = X.obs[obs_index].tolist()
+        
+        self.measures[modality] = X
+        
         setattr(self, modality, self.measures[modality])
         print("Modality {} added.".format(modality))
 
