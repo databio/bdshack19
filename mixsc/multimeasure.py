@@ -54,7 +54,8 @@ class MultiAnnData(object):
         """
 
         if modality not in SUPPORTED_MODALITIES:
-            raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
+            raise AttributeError('Unsupported modality: '{}'. Must be one of {}'.format(
+                modality, str(SUPPORTED_MODALITIES))
 
         adata = load_AnnData(file_x, file_obs, file_var, obs_index, var_index, parent_folder,
             transpose_x)
@@ -74,7 +75,7 @@ class MultiAnnData(object):
             else:
                 logging.warn("Overwriting modality: {}".format(modality))
 
-            self._adatas[modality] = adata
+        self._adatas[modality] = adata
 
         print("Modality {} added.".format(modality))
 
