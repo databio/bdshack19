@@ -1,0 +1,2 @@
+#may need to run `git rm --cached file.ipynb` for those already accidentally included
+**/.ipynb_checkpoints/
