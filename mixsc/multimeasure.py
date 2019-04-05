@@ -85,3 +85,22 @@ class Multimeasure(object):
     def is_empty(self):
         """ Check if object contains any modalities """
         return not bool(self.measures)
+
+    def save_modalities(self, file_name: str, select: list = None):
+        """ Save selected modalities into .h5ad files.
+
+        :param file_name: name of h5ad file
+        :param select: list of modalities to save into separate files, if None all modalities will be saved
+        """
+        if not select:
+            select = self.measures.keys()
+
+        for mtype in select:
+            if mtype not in self.measures.keys():
+                raise AttributeError("Could not find {} modality".format(mtype))
+
+        if file_name.lower().endswith(".h5ad"):
+            file_name = file_name.split(".h5ad")[0]
+
+        for mtype in select:
+            self.measures[mtype].write(file_name + "_" + mtype + ".h5ad")
