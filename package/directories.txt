@@ -1,0 +1,14 @@
+MoPy/
+    bin/
+    CHANGES.txt
+    docs/
+    LICENSE.txt
+    MANIFEST.in
+    README.txt
+    setup.py
+    mopy/
+        __init__.py
+        multianndata.py
+        test/
+            __init__.py
+            test_multianndata.py
