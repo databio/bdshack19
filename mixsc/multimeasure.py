@@ -36,7 +36,7 @@ class MultiAnnData(object):
                 self.measures[modality] = mode_map[modality]
 
         # Initiate attributes for supported modalities
-        for modality in SUPPORTED_MODALITIES
+        for modality in SUPPORTED_MODALITIES:
             self.modality = None
 
     def __str__(self):
