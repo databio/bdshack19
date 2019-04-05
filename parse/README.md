@@ -12,11 +12,11 @@ We offer an option to output a [pickled](https://docs.python.org/3/library/pickl
 
 ## Overview
 
-For each data type (e.g. RNA, ATAC), we create a single AnnData object. We then load the individual AnnData objects into a custom object of class [Multimeasure](../../../blob/master/mixsc/multimeasure.py) that contains all data types (e.g. levels of omics data) generated from a set of samples. Within the Multimeasure object, observations of one modality for a given set of samples can be linked to observations of a different modality for the same samples. This permits seamless integration of multiple omics modalities in downstream analyses.
+For each data type (e.g. RNA, ATAC), we create a single AnnData object. We then load the individual AnnData objects into a custom object of class [MultiAnnData](../../../blob/master/mixsc/multimeasure.py) that contains all data types (e.g. levels of omics data) generated from a set of samples. Within the MultiAnnData object, observations of one modality for a given set of samples can be linked to observations of a different modality for the same samples. This permits seamless integration of multiple omics modalities in downstream analyses.
 
 ## Details
 
-#### We stick with scanpy/anndata if possible: 
+#### We stick with scanpy/anndata if possible:
 see [detailed_parsing_mouse_kidey_py.ipynb](./detailed_parsing_mouse_kidey_py.ipynb)
  - can go from here to https://github.com/databio/bdshack19/tree/master/multi_clustering
  - and use a simpler intermediate file format that saves the anndata object ([see notebook example](https://github.com/databio/bdshack19/blob/master/multi_clustering/Read%20or%20Write%20anndata.ipynb))
@@ -29,4 +29,4 @@ We use the [pandas library](http://pandas.pydata.org/) to read annotation matric
 
 As noted above, we use the [anndata class](https://anndata.readthedocs.io/en/latest/anndata.AnnData.html#anndata.AnnData) to store annotations for variables (columns) and observations (rows) with their associated matrix of measurements. We associate dataframes and matrix with `AnnData(X=X, obs=obs, var=var)`.
 
-Finally, we use [pandas](http://pandas.pydata.org/) once more to link annotations and measurements for samples across multiple modalities. We link across modalities with `pd.merge(mod1, mod2, how=how, on=on)`.
+Finally, we use [pandas](http://pandas.pydata.org/) once more to link annotations and measurements for samples across multiple modalities. We link across modalities with `pandas.merge(mod1, mod2, how=how, on=on)`.
