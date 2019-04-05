@@ -29,21 +29,21 @@ class MultiAnnData(object):
 
     def __init__(self, modalities: str = None, adatas: str = None):
 
-        self.measures = {}
+        self.adatas = {}
 
         if adatas and modalities:
-            mode_map = dict(zip(modalities, measures))
+            mode_map = dict(zip(modalities, adatas))
             for modality in mode_map.keys():
                 self.add_modality(modality, adata)
 
 
     def join(self, how, on, modalities=None):
         if not modalities:
-            modalities = list(self.measures.keys())
+            modalities = list(self.adatas.keys())
         if (len(modalities)) != 2:
             raise Exception("Must provide 2 modalities to join.")
-        return pd.merge(self.measures[modalities[0]].var,
-                        self.measures[modalities[1]].var, how=how, on=on)
+        return pd.merge(self.adatas[modalities[0]].var,
+                        self.adatas[modalities[1]].var, how=how, on=on)
 
 
     def load_modality(self, modality: str, file_x: str, file_obs: str = None, file_var: str = None,
@@ -68,20 +68,20 @@ class MultiAnnData(object):
         if modality not in SUPPORTED_MODALITIES:
             raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
    
-        if modality in self.measures.keys():
+        if modality in self.adatas.keys():
             if not overwrite:
                 raise AttributeError("Modality of type: {}, already exist in Multimeasure object".format(modality))
             else:
                 logging.warn("Overwriting modality: {}".format(modality))
 
-            self.measures[modality] = adata
+            self.adatas[modality] = adata
 
         print("Modality {} added.".format(modality))
 
 
     def is_empty(self):
         """ Check if object contains any modalities """
-        return not bool(self.measures)
+        return not bool(self.adatas)
 
 
     def save_modalities(self, file_name: str, select: list = None):
@@ -91,24 +91,24 @@ class MultiAnnData(object):
         :param select: list of modalities to save into separate files, if None all modalities will be saved
         """
         if not select:
-            select = self.measures.keys()
+            select = self.adatas.keys()
 
         for mtype in select:
-            if mtype not in self.measures.keys():
+            if mtype not in self.adatas.keys():
                 raise AttributeError("Could not find {} modality".format(mtype))
 
         if file_name.lower().endswith(".h5ad"):
             file_name = file_name.split(".h5ad")[0]
 
         for mtype in select:
-            self.measures[mtype].write(file_name + "_" + mtype + ".h5ad")
+            self.adatas[mtype].write(file_name + "_" + mtype + ".h5ad")
 
     def __getattr__(self, name):
         """
         Allows for attribute-style access for supported modalities
         """
         if name in SUPPORTED_MODALITIES:
-            return self.measures[name]
+            return self.adatas[name]
         else:
             raise AttributeError("%r object has no attribute %r" %
                      (self.__class__.__name__, name))
@@ -118,8 +118,8 @@ class MultiAnnData(object):
     def __str__(self):
 
         str = "{} object with {} modalities\n".format(
-            self.__class__.__name__, len(self.measures))
-        for k, v in self.measures.items():
+            self.__class__.__name__, len(self.adatas))
+        for k, v in self.adatas.items():
             str += "{key}: {val}\n".format(key=k, val=v.__str__())
 
         return str
