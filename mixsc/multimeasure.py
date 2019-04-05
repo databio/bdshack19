@@ -34,6 +34,10 @@ class Multimeasure(object):
                     raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
                 self.measures[modality] = mode_map[modality]
 
+        # Initiate attributes for supported modalities
+        for modality in SUPPORTED_MODALITIES
+            self.modality = None
+
     def __str__(self):
 
         str = "{} object with {} modalities\n".format(

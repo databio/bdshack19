@@ -24,7 +24,12 @@ mm.measures['ATAC'].X.shape
 # linking two modalities:
 merge = mm.join(how="inner", on="sample")
 merge.iloc[1:5,:]
-merge
+merge.shape
+
+
+
+merge = mm.join(how="outer", on="sample")
+
 
 
 pd.merge(ac, gc, how="outer", on="sample")
