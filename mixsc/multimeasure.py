@@ -2,9 +2,9 @@ import logging
 import os
 import pandas as pd
 import scanpy as sc
-import scipy
+import scipy.io
 
-SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT_QUANT']
+SUPPORTED_MODALITIES = ['RNA', 'ATAC', 'PROT']
 
 
 class MultiAnnData(object):
@@ -27,6 +27,10 @@ class MultiAnnData(object):
 
     def __init__(self, measures: str = None, modalities: str = None):
 
+        # Initiate attributes for supported modalities
+        for modality in SUPPORTED_MODALITIES:
+            setattr(self, modality, None)
+
         self.measures = {}
         if measures and modalities:
             mode_map = dict(zip(modalities, measures))
@@ -34,10 +38,7 @@ class MultiAnnData(object):
                 if modality not in SUPPORTED_MODALITIES:
                     raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
                 self.measures[modality] = mode_map[modality]
-
-        # Initiate attributes for supported modalities
-        for modality in SUPPORTED_MODALITIES:
-            self.modality = None
+                setattr(self, modality, mode_map[modality])
 
     def __str__(self):
 
@@ -56,7 +57,7 @@ class MultiAnnData(object):
         return pd.merge(self.measures[modalities[0]].var,
                         self.measures[modalities[1]].var, how=how, on=on)
 
-    def add_modality(self, modality_type: str, file_x: str, file_obs: str = None, file_var: str = None,
+    def add_modality(self, modality: str, file_x: str, file_obs: str = None, file_var: str = None,
                      parent_folder: str = "", transpose_x=False, overwrite=False):
         """
         Given up to 3 matrix files, creates AnnData file and adds it to Multimeasure object
@@ -66,7 +67,7 @@ class MultiAnnData(object):
         :param file_var: Filename for variables annotation matrix in CSV format.
         """
 
-        if modality_type not in SUPPORTED_MODALITIES:
+        if modality not in SUPPORTED_MODALITIES:
             raise AttributeError('Unsupported modality. Must be one of ' + str(SUPPORTED_MODALITIES))
 
         X = scipy.io.mmread(os.path.join(parent_folder, file_x))
@@ -83,13 +84,15 @@ class MultiAnnData(object):
         else:
             var = None
 
-        if modality_type in self.measures.keys():
+        if modality in self.measures.keys():
             if not overwrite:
-                raise AttributeError("Modality of type: {}, already exist in Multimeasure object".format(modality_type))
+                raise AttributeError("Modality of type: {}, already exist in Multimeasure object".format(modality))
             else:
-                logging.warn("Overwriting modality: {}".format(modality_type))
+                logging.warn("Overwriting modality: {}".format(modality))
 
-        self.measures[modality_type] = sc.AnnData(X=X, obs=obs, var=var)
+        self.measures[modality] = sc.AnnData(X=X, obs=obs, var=var)
+        setattr(self, modality, self.measures[modality])
+        print("Modality {} added.".format(modality))
 
     def is_empty(self):
         """ Check if object contains any modalities """
