@@ -12,7 +12,7 @@ We offer an option to output a [pickled](https://docs.python.org/3/library/pickl
 
 ## Overview
 
-For each data type (e.g. RNA, ATAC), we create a single AnnData object. We then load the individual AnnData objects into a custom object of class [Multimeasure](../master/mixsc/multimeasure.py) that contains all data types (e.g. levels of omics data) generated from a set of samples. Within the Multimeasure object, observations of one modality for a given set of samples can be linked to observations of a different modality for the same samples. This permits seamless integration of multiple omics modalities in downstream analyses.
+For each data type (e.g. RNA, ATAC), we create a single AnnData object. We then load the individual AnnData objects into a custom object of class [Multimeasure](../../../blob/master/mixsc/multimeasure.py) that contains all data types (e.g. levels of omics data) generated from a set of samples. Within the Multimeasure object, observations of one modality for a given set of samples can be linked to observations of a different modality for the same samples. This permits seamless integration of multiple omics modalities in downstream analyses.
 
 ## Details
 
