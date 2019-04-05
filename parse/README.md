@@ -16,6 +16,13 @@ For each data type (e.g. RNA, ATAC), we create a single AnnData object. We then 
 
 ## Details
 
+#### We stick with scanpy/anndata if possible: 
+see [detailed_parsing_mouse_kidey_py.ipynb](./detailed_parsing_mouse_kidey_py.ipynb)
+ - can go from here to https://github.com/databio/bdshack19/tree/master/multi_clustering
+ - and use a simpler intermediate file format that saves the anndata object ([see notebook example](https://github.com/databio/bdshack19/blob/master/multi_clustering/Read%20or%20Write%20anndata.ipynb))
+
+
+#### Or, we can use the separate components to manually load it ourselves (deconstruct what scanpy is doing):
 We use the [SciPy library](https://www.scipy.org/scipylib/index.html) to read a Matrix Market file-like count matrix into a sparse matrix. We read counts with `scipy.io.mmread(source)`.
 
 We use the [pandas library](http://pandas.pydata.org/) to read annotation matrices into dataframes. We read annotations with `pandas.read_csv(source)`.
