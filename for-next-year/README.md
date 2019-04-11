@@ -26,6 +26,8 @@ Thank you, Nathan Sheffield and Jason Papin, for helping make the Hackathon a su
 
 * BDSHackathon computing group on Rivanna
 
+* discussion of pickling
+
 ## Things to optimize
 
 * Advanced determination and distribution of a single technology, research paper, and associated dataset (e.g. dataset in shared directory with read access for group)
