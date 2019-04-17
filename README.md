@@ -191,6 +191,7 @@ Cons:
  - less established tools -> more challenging to implement
  - data is less convenient -> spread across >2000 files (single well nature of data collection led to single file per cell)
    - ! unclear if protein signal is available (may need to contact authors)
+   - authors replied with [attachments](./parse/pi-ATAC-protein_signal) (data will be eventually updated on GEO, but can use these for now)
 
 ### Option 2. sci-CAR (RNA + ATAC)
 paper (Cao 2018): http://science.sciencemag.org/content/361/6409/1380
