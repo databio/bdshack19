@@ -1,0 +1,6 @@
+Description	Resourse(Cell line/ tissue)	Species	treatment	staining 	number of cells sorted	file name	additional file
+GM_single_cell_unstimulated_but_stained	GM12879	Human	none	"pNFkB, CD19"	384	FI_GM_pNFkB-CD19_4plates.tsv	
+"Tumor_stained_for_EpCam,_pFAK,_HIF1a"	MMTV-PyMT breast cancer	Mouse	none	"EpCam, pFAK, HIF1a"	956	FI_Tumor_HIF-Epcam_8Plates_unbiased.tsv	FI_Tumor_Epcam-HIF-high_2plates.tsv
+4T1_and_splenocyte_mixture_experiment	4T1 and mouse_spleen 	Mouse and human 	none	"EpCam, CD45"	192	FI_Spleen-4T1_Epcam-CD45_2Plates.tsv	
+"Tumor_stained_for_EPCam,_CD45"	MMTV-PyMT breast cancer	Mouse	none	"EpCam, CD45"	396	FI_CD45-Epcam_Tumor-Immune_4plates.tsv	
+K562_nuclei_stained_for_GATA2_DAPI	K562	Human	none	" GATA2, DAPI"	288	FI_K562_GATA-DAPI_3plates_unbiased.tsv	
