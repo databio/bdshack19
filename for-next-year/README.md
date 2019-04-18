@@ -43,3 +43,6 @@ Thank you, Nathan Sheffield and Jason Papin, for helping make the Hackathon a su
 ## Dataset proposals 2020
 
 * Long-read sequencing
+* Spatial expression
+  * mass cytometry based https://www.ionpath.com/publications/
+  * sequencing based https://spatialtranscriptomics.com/publications/
