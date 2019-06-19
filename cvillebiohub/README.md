@@ -1,24 +1,29 @@
 # CvilleBioHub Presentation
 
-This presentation was given June 19, 2019 to a group of UVa graduate students and post-docs along with others in the Charlottesville community with an interest in biomedical data science. The event was co-sponsored by [UVa Biomedical Data Sciences](http://bme.virginia.edu/bds/) and [CvilleBioHub](https://cvillebiohub.org/).
+This presentation was given June 19, 2019 to a group of UVa graduate students and post-docs along with others in the Charlottesville community with an interest in biomedical data science. The event was co-sponsored by the [UVa Biomedical Data Sciences Training Program](http://bme.virginia.edu/bds/) and [CvilleBioHub](https://cvillebiohub.org/).
 
 ## How to view
 
-Unfortunately, the current way to view the presentation is inconvenient, but it has been tested on Windows and Mac and works. Here is a step-by-step guide:
+### 1. Download
+Options
+* `wget https://github.com/databio/bdshack19/tree/master/cvillebiohub/hack2019-pres.tar.gz`
+* `curl -O https://github.com/databio/bdshack19/tree/master/cvillebiohub/hack2019-pres.tar.gz`
 
-### 1. Download the `prez.tar.gz` object
-  * `wget https://github.com/databio/bdshack19/tree/master/prez.tar.gz`
+### 2. Unpack
+* `tar -xvzf hack2019-pres.tar.gz`
 
-OR
+### 3. Open
+Options
+* `firefox hack2019-presentation/hackathon-2019-pres-final.html`
+* `open -a Firefox hack2019-presentation/hackathon-2019-pres-final.html`
 
-  * `curl -O https://github.com/databio/bdshack19/tree/master/prez.tar.gz`
+## How it was created
 
-### 2. Unpack the object
-  * `tar -xvzf prez.tar.gz`
+### 1. Create base file with [Markdown](https://daringfireball.net/projects/markdown/) in text editor of choice
+* `hackathon-2019-pres-final.md`
 
-### 3. Open the `hackathon-2019-pres-ccr.html` presentation with an html browser
-  * `firefox hackathon-2019-pres-ccr.html`
+### 2. Convert to [reveal.js](https://revealjs.com/#/) html presentation with [Pandoc](https://pandoc.org/) in shell
+* `pandoc -t revealjs -s -o hack2019-presentation/hackathon-2019-pres-final.html hackathon-2019-pres-final.md`
 
-OR
-
-  * `open -a Firefox hackathon-2019-pres-ccr.html`
+### 3. Package the html code with the assets
+* `tar -zcvf hack2019-pres.tar.gz hack2019-presentation/`
